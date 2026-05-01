@@ -1,0 +1,38 @@
+<?php
+session_start();
+
+include __DIR__ . '/../includes/db.php';
+
+if (!isset($_POST['email'], $_POST['password'])) {
+    die('Invalid request');
+}
+
+$email = trim($_POST['email']);
+$password = $_POST['password'];
+
+$stmt = $conn->prepare("SELECT id, name, password, role FROM users WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+if ($result && $result->num_rows > 0) {
+    $user = $result->fetch_assoc();
+
+    if (password_verify($password, $user['password'])) {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_name'] = $user['name'];
+        $_SESSION['role'] = $user['role'] ?? 'user';
+
+        if ($_SESSION['role'] === 'admin') {
+            redirect_to_route('admin.dashboard');
+        }
+
+        redirect_to_route('home');
+    }
+
+    echo 'Invalid password';
+} else {
+    echo 'User not found';
+}
+?>

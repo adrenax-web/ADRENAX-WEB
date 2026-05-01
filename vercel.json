@@ -1,0 +1,145 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "functions": {
+    "index.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "pages/*.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "actions/*.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "admin/*.php": {
+      "runtime": "vercel-php@0.5.2"
+    },
+    "api/*.php": {
+      "runtime": "vercel-php@0.5.2"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/pages/home.php",
+      "destination": "/home",
+      "permanent": true
+    },
+    {
+      "source": "/pages/shop.php",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/pages/login.php",
+      "destination": "/login",
+      "permanent": true
+    },
+    {
+      "source": "/pages/register.php",
+      "destination": "/register",
+      "permanent": true
+    },
+    {
+      "source": "/pages/cart.php",
+      "destination": "/cart",
+      "permanent": true
+    },
+    {
+      "source": "/pages/checkout.php",
+      "destination": "/checkout",
+      "permanent": true
+    },
+    {
+      "source": "/pages/orders.php",
+      "destination": "/orders",
+      "permanent": true
+    },
+    {
+      "source": "/admin/dashboard.php",
+      "destination": "/admin",
+      "permanent": true
+    },
+    {
+      "source": "/admin/products.php",
+      "destination": "/admin/products",
+      "permanent": true
+    },
+    {
+      "source": "/admin/add_product.php",
+      "destination": "/admin/products/add",
+      "permanent": true
+    },
+    {
+      "source": "/admin/manage_orders.php",
+      "destination": "/admin/orders",
+      "permanent": true
+    },
+    {
+      "source": "/admin/manage_users.php",
+      "destination": "/admin/users",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.php"
+    },
+    {
+      "source": "/home",
+      "destination": "/pages/home.php"
+    },
+    {
+      "source": "/shop",
+      "destination": "/pages/shop.php"
+    },
+    {
+      "source": "/login",
+      "destination": "/pages/login.php"
+    },
+    {
+      "source": "/register",
+      "destination": "/pages/register.php"
+    },
+    {
+      "source": "/cart",
+      "destination": "/pages/cart.php"
+    },
+    {
+      "source": "/checkout",
+      "destination": "/pages/checkout.php"
+    },
+    {
+      "source": "/orders",
+      "destination": "/pages/orders.php"
+    },
+    {
+      "source": "/logout",
+      "destination": "/actions/logout.php"
+    },
+    {
+      "source": "/product/:id",
+      "destination": "/pages/product.php?id=:id"
+    },
+    {
+      "source": "/admin",
+      "destination": "/admin/dashboard.php"
+    },
+    {
+      "source": "/admin/products",
+      "destination": "/admin/products.php"
+    },
+    {
+      "source": "/admin/products/add",
+      "destination": "/admin/add_product.php"
+    },
+    {
+      "source": "/admin/orders",
+      "destination": "/admin/manage_orders.php"
+    },
+    {
+      "source": "/admin/users",
+      "destination": "/admin/manage_users.php"
+    }
+  ]
+}
